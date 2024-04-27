@@ -1,0 +1,85 @@
+@font-face {
+    font-family: "Vazirmatn";
+    src: url("~static/fonts/Vazirmatn[wght].woff2") format("woff2 supports variations"),
+        url("~static/fonts/Vazirmatn[wght].woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Vazirmono";
+    src: url("~static/fonts/Vazirmatn-FD-NL-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Vazirmono";
+    src: url("~static/fonts/Vazirmatn-FD-NL-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+.mono {
+    font-family: "Vazirmono" !important;
+}
+
+.tw-box-shadow {
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1) !important;
+}
+
+.fill-width, .w-full {
+    width: 100%;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.lh-32 {
+    line-height: 32px !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.text-brandPrimary-main {
+    color: rgb(77 89 153 / 1) !important;
+}
+.text-brandPrimary-light {
+    color: rgb(97 172 255 / 1) !important;
+}
+.v-bottom-sheet.v-dialog {
+    align-self: flex-end;
+    border-radius: 0;
+    flex: 0 1 auto;
+    margin: 0;
+    overflow: visible
+}
+.pointer {
+    cursor: pointer;
+}
+.shadow_ {
+    box-shadow: 0 6px 12px 0 rgba(41, 34, 115, 0.082);
+    /* box-shadow: 0px 6px 16px -6px #4545550d; */
+}
+.header_shadow {
+    box-shadow: 0 6px 16px -6px rgba(69, 69, 85, .05);
+}
+.active-nav-link {
+    color: #455089 !important;
+}
+@media (min-width: 640px) {
+    .sm\:w-96 {
+        width: 24rem;
+    }
+}

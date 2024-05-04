@@ -89,7 +89,8 @@ export default {
         const response = await this.$auth.loginWith('local', {
           data: this.formData
         })
-        console.log(response)
+        this.$auth.setUser(response.data.user)
+        this.$auth.setUserToken(response.data.token)
       } catch (err) {
         console.log(err)
       } finally {

@@ -7,6 +7,7 @@
 
 <script>
 export default {
-  name: 'DefaultLayout'
+  name: 'DefaultLayout',
+  middleware: 'redirectIndex'
 }
 </script>

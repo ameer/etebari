@@ -74,13 +74,13 @@ export default {
           type: 'Bearer'
         },
         user: {
-          property: false,
-          autoFetch: false
+          property: 'data',
+          autoFetch: true
         },
         endpoints: {
           login: { url: '/auth/login', method: 'post' },
           logout: { url: '/auth/logout', method: 'get' },
-          user: { url: '/auth/me', method: 'get' }
+          user: { url: '/accounts/profiles/', method: 'get' }
         }
       }
     }

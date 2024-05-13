@@ -1,16 +1,24 @@
 <template>
-  <v-form ref="registerForm" @submit.prevent="checkRegister">
+  <v-form ref="registerForm" v-model="valid" @submit.prevent="checkRegister">
     <div class="d-flex flex-column align-center fill-width">
       <span class="primary--text font-weight-bold text-h5 pt-2 pb-0 py-sm-2">ورود / ثبت‌نام</span>
       <span class="text-brandSecondary-light text-body-2 gray-500--text text-center py-10 lh-32 py-sm-5">لطفاً شماره ملی یا شناسه ملی خود را بدون خط فاصله در کادر زیر وارد نمایید. سپس دکمه تأیید و ادامه را بزنید.
       </span>
     </div>
     <div class="d-flex flex-column">
-      <v-text-field v-model="formData.national_id" label="کد ملی | شناسه ملی" outlined class="rounded" />
+      <v-text-field v-model="formData.national_id" :rules="[$rules().required]" label="کد ملی | شناسه ملی" outlined class="rounded" />
       <div class="pt-3">
-        <auth-captcha-field v-model="formData.captcha" @updateKey="formData.key = $event" />
+        <auth-captcha-field v-model="formData.captcha" :rules="[$rules().required]" @updateKey="formData.key = $event" />
       </div>
-      <v-btn block type="submit" color="primary" height="52" class="text-body-1 rounded-lg">
+      <v-btn
+        :disabled="!valid"
+        :loading="loading.checkIsRegistered"
+        block
+        type="submit"
+        color="primary"
+        height="52"
+        class="text-body-1 rounded-lg"
+      >
         تأیید و ادامه
       </v-btn>
       <v-btn
@@ -27,16 +35,20 @@
   </v-form>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
+      valid: true,
       formData: {
         national_id: '',
         captcha: '',
         key: ''
       }
     }
+  },
+  computed: {
+    ...mapGetters(['loading'])
   },
   methods: {
     ...mapActions('accounts', ['_checkIsRegistered']),

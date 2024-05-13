@@ -2,7 +2,7 @@
   <v-card class="rounded-xxl white tw-box-shadow pa-6 fill-width">
     <v-form ref="registerForm" @submit.prevent="registerUser">
       <div class="d-flex flex-column align-center fill-width">
-        <span class="primary--text font-weight-bold text-h5 pt-2 pb-0 py-sm-2">ثبت نام کاربر حقیقی</span>
+        <span class="primary--text font-weight-bold text-h5 pt-2 pb-0 py-sm-2" v-text="isEditNumber ? 'ویرایش شماره موبایل' :'ثبت نام کاربر حقیقی'" />
         <span class="text-brandSecondary-light font-weight-bold text-center lh-32">
           شماره ملی {{ national_id }}
         </span>
@@ -10,9 +10,9 @@
         </span>
       </div>
       <div class="d-flex flex-column">
-        <v-text-field v-model="formData.national_id" label="شماره موبایل (مثلا: 09123333333)" outlined class="rounded" />
+        <v-text-field v-model="formData.phone_number" :rules="[$rules().required, $rules().mobilePhoneChecker]" label="شماره موبایل (مثلا: 09123333333)" outlined class="rounded" />
         <div class="pt-3">
-          <auth-captcha-field v-model="formData.captcha" @updateKey="formData.key = $event" />
+          <auth-captcha-field v-model="formData.captcha" @updateKey="key = $event" />
         </div>
         <v-btn block type="submit" color="primary" height="52" class="text-body-1 rounded-lg">
           تأیید و ادامه
@@ -23,9 +23,9 @@
           color="primary"
           height="52"
           class="font-weight-medium mt-4 text-body-1 rounded-lg"
-          @click="$nuxt.$emit('setLoginMode', true)"
+          @click="$router.replace({ name: 'auth-login'})"
         >
-          ورود با نام کاربری
+          بازگشت
         </v-btn>
       </div>
     </v-form>
@@ -36,25 +36,30 @@ import { mapActions } from 'vuex'
 export default {
   layout: 'auth',
   auth: false,
+  middleware: 'authSteps',
   data () {
     return {
       formData: {
-        national_id: '',
         phone_number: '',
         captcha: ''
-      }
+      },
+      key: ''
     }
   },
   computed: {
     national_id () {
       return this.$route.params.national_id
+    },
+    isEditNumber () {
+      return this.$route.params.editNumber
     }
   },
   methods: {
     ...mapActions('accounts', ['_registerUser']),
     registerUser () {
-      this._registerUser(this.formData).then((resp) => {
-        // Try with number
+      const data = { national_id: this.national_id, ...this.formData }
+      this._registerUser({ data, key: this.key }).then((resp) => {
+        this.$router.push({ name: 'auth-login-otp', params: { national_id: this.national_id, phone_number: this.formData.phone_number } })
       })
     }
   }

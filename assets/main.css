@@ -143,6 +143,9 @@ a {
 .text-brandSecondary-light {
   color: rgb(167 52 67 / 1) !important;
 }
+.text-gray-500 {
+  color: rgb(107 114 128 / 1);
+}
 .v-bottom-sheet.v-dialog {
   align-self: flex-end;
   border-radius: 0;
@@ -181,4 +184,10 @@ span.circle {
   .sm\:w-96 {
     width: 24rem;
   }
+}
+.custom-otp-input input {
+  letter-spacing: 5px !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  font-size: 14pt !important;
 }

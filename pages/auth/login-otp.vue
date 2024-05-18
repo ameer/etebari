@@ -3,9 +3,9 @@
     <v-form ref="registerForm" @submit.prevent="loginOTP">
       <div class="d-flex flex-column align-center fill-width">
         <span class="primary--text font-weight-bold text-h5 pt-2 pb-0 py-sm-2">ورود به سامانه</span>
-        <span class="text-brandSecondary-light font-weight-bold text-center lh-32">
-          شماره موبایل {{ phone_number }}
-        </span>
+        <div class="text-brandSecondary-light font-weight-bold text-center lh-32 d-flex align-center">
+          شماره موبایل <div dir="ltr" class="mr-2" v-text="phone_number" />
+        </div>
         <span class="text-brandSecondary-light text-body-2 gray-500--text text-center py-10 lh-32 py-sm-5">یک کد برای شماره موبایل شما پیامک شد. آن را در کادر زیر وارد نموده و دکمه ورود به سامانه را بزنید.
         </span>
       </div>
@@ -71,11 +71,15 @@ export default {
   },
   methods: {
     ...mapActions('accounts', ['_loginOTP']),
-    loginOTP () {
+    async loginOTP () {
       const data = { national_id: this.national_id, otp: this.otp }
-      this._loginOTP(data).then((resp) => {
+      try {
+        const resp = await this._loginOTP(data)
         this.$auth.setUserToken(resp.data.access, resp.data.refresh)
-      })
+        this.$router.push('/dashboard')
+      } catch (error) {
+        alert(error)
+      }
     }
   }
 }

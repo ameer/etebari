@@ -54,8 +54,10 @@ export default {
     ...mapActions('accounts', ['_checkIsRegistered']),
     checkRegister () {
       this._checkIsRegistered(this.formData).then((resp) => {
-        // Go to OTP
-        console.log(resp)
+        // eslint-disable-next-line camelcase
+        const phone_number = resp.data.phoneNumber
+        // eslint-disable-next-line camelcase
+        this.$router.push({ name: 'auth-login-otp', params: { national_id: this.formData.national_id, phone_number } })
       }).catch((err) => {
         if (err.response?.data?.code === 2000) {
           this.$router.push({ name: 'auth-register-mobile', params: { national_id: this.formData.national_id } })

@@ -55,7 +55,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'https://dummyjson.com/'
+    baseURL: 'http://46.209.4.108/api/v1/'
   },
   auth: {
     redirect: {
@@ -74,13 +74,13 @@ export default {
           type: 'Bearer'
         },
         user: {
-          property: false,
-          autoFetch: false
+          property: 'data',
+          autoFetch: true
         },
         endpoints: {
           login: { url: '/auth/login', method: 'post' },
           logout: { url: '/auth/logout', method: 'get' },
-          user: { url: '/auth/me', method: 'get' }
+          user: { url: '/accounts/profiles/', method: 'get' }
         }
       }
     }

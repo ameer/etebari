@@ -39,10 +39,7 @@
         </v-btn>
       </div>
       <div class="pt-3">
-        <div class="d-flex fill-width justify-space-between pt-3">
-          <v-text-field outlined class="rounded fill-width text-center p-2" placeholder="کد امنیتی" />
-          <v-img contain max-height="56" alt="captcha" src="/captcha.jpg" />
-        </div>
+        <auth-captcha-field v-model="formData.captcha" />
       </div>
       <v-btn
         block

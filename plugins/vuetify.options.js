@@ -12,6 +12,9 @@ export default {
       light: {
         primary: '#404079',
         'gray-500': '#6b7280',
+        'gray-100': '#f3f4f6',
+        indigo: '#455089',
+        iceBlue: '#eaedf4',
         main: colors.blue
       },
       dark: {

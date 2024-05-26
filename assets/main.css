@@ -173,12 +173,24 @@ a {
 .rounded-12 {
   border-radius: 12px !important;
 }
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
 span.circle {
   width: 12px;
   height: 12px;
   background: rgb(203 213 225);
   border-radius: 50%;
   margin: 4px;
+}
+.bg-gradianPrimay {
+  background-image: linear-gradient(90deg, #5f69a5, #333b65);
+}
+.h-32 {
+  height: 8rem;
 }
 @media (min-width: 640px) {
   .sm\:w-96 {

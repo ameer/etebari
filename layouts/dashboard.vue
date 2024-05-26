@@ -6,7 +6,7 @@
         <v-row no-gutters justify="center" class="fill-height">
           <v-col
             cols="12"
-            class="d-flex flex-column justify-center rounded-xl flex-1 white py-4 shadow_"
+            class="d-flex flex-column justify-center rounded-xl flex-1 white shadow_ relative"
           >
             <Nuxt />
           </v-col>

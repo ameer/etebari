@@ -3,7 +3,8 @@ export const $URL = {
   // check account registered before
   accounts: 'accounts',
   register: 'accounts/register',
-  loginOTP: 'authentication/login/otp'
+  loginOTP: 'authentication/login/otp',
+  setUserPass: 'accounts/profiles/password/'
 }
 
 function initialState () {
@@ -43,7 +44,11 @@ export const actions = {
   },
   _loginOTP ({ dispatch }, data) {
     return dispatch('$post', { url: $URL.loginOTP, data }, { root: true })
+  },
+  _setUserPass ({ dispatch }, data) {
+    return dispatch('$put', { url: $URL.setUserPass, data }, { root: true })
   }
+
 }
 export const getters = {
   loading: state => state.loading

@@ -1,5 +1,5 @@
 <template>
-  <v-footer app paddless color="#f9fafb">
+  <v-footer app paddless color="#f9fafb" absolute>
     <v-container>
       <div class="d-flex flex-column fill-width justify-center align-center py-3 text-center">
         <div class="d-flex mb-3 justify-center items-center">

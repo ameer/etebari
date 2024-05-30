@@ -137,15 +137,27 @@ a {
 .text-brandPrimary-light {
   color: rgb(97 172 255 / 1) !important;
 }
+
 .text-brandPrimary-black {
   color: rgb(69 69 85 / 1) !important;
 }
+
 .text-brandSecondary-light {
   color: rgb(167 52 67 / 1) !important;
 }
+
 .text-gray-500 {
   color: rgb(107 114 128 / 1);
 }
+
+.bg-brandPrimary-silver {
+  background-color: rgb(244 245 249 / 1);
+}
+
+.border-gray-100 {
+  border: 1px solid rgb(243 244 246 / 1);
+}
+
 .v-bottom-sheet.v-dialog {
   align-self: flex-end;
   border-radius: 0;
@@ -170,15 +182,19 @@ a {
 .active-nav-link {
   color: #455089 !important;
 }
+
 .rounded-12 {
   border-radius: 12px !important;
 }
+
 .relative {
   position: relative;
 }
+
 .absolute {
   position: absolute;
 }
+
 span.circle {
   width: 12px;
   height: 12px;
@@ -186,30 +202,37 @@ span.circle {
   border-radius: 50%;
   margin: 4px;
 }
+
 .bg-gradianPrimay {
   background-image: linear-gradient(90deg, #5f69a5, #333b65);
 }
+
 .h-32 {
   height: 8rem;
 }
+
 @media (min-width: 640px) {
   .sm\:w-96 {
     width: 24rem;
   }
 }
+
 .custom-otp-input input {
   letter-spacing: 5px !important;
   text-align: center !important;
   font-weight: bold !important;
   font-size: 14pt !important;
 }
+
 .v-input__append-inner {
   margin: auto !important;
 }
+
 /* Toast Theme */
 .Vue-Toastification__container {
   width: 320px !important;
 }
+
 .Vue-Toastification__toast {
   border-radius: 10px !important;
   width: 100% !important;
@@ -240,4 +263,25 @@ span.circle {
 .Vue-Toastification__icon {
   font-size: 20px !important;
   margin: 0 0 0 10px !important;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.w-72 {
+  width: 18rem;
+}
+
+.custom-tab {
+  border-bottom: 1px solid;
+  border-color: rgb(229, 231, 235);
+}
+
+.custom-select {
+  background-color: rgb(249, 250, 251);
+}
+
+.custom-select fieldset {
+  border-color: rgb(209, 213, 219);
 }

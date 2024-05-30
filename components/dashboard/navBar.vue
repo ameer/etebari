@@ -25,7 +25,7 @@ export default {
       items: [
         { title: 'پیشخوان', to: '/dashboard' },
         { title: 'گزارش اعتباری من', to: '/dashboard/inquiry' },
-        // { title: 'گزارش اعتباری مشتریان من', to: '/dashboard/share' },
+        { title: 'گزارش اعتباری مشتریان من', to: '/dashboard/share' },
         { title: 'اعتراض', to: '/dashboard/objection' }
       ]
     }

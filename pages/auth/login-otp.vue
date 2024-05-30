@@ -20,7 +20,9 @@
       </div>
       <div class="d-flex flex-column">
         <v-text-field
+          ref="otpInput"
           v-model="otp"
+          autofocus
           autocomplete="off"
           maxlength="5"
           :rules="[$rules().required, $rules().numeric, $rules(5).min, $rules(5).max]"
@@ -75,6 +77,13 @@ export default {
     },
     phone_number () {
       return this.$route.params.phone_number
+    }
+  },
+  mounted () {
+    try {
+      this.$refs.otpInput.focus()
+    } catch (error) {
+      console.log(error)
     }
   },
   methods: {

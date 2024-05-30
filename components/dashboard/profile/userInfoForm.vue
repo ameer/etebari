@@ -1,9 +1,9 @@
 <template>
   <div class="pa-6">
     <h6 class="text-center text-h6 primary--text mb-6 mb-md-12">
-      {{ editMode ? 'ویرایش نام کاربری و رمز عبور' : 'تعیین نام کاربری و رمز عبور' }}
+      ویرایش اطلاعات
     </h6>
-    <v-form ref="userPassForm" v-model="valid" @submit.prevent="handleSubmit">
+    <v-form ref="userInfoForm" v-model="valid" @submit.prevent="handleSubmit">
       <v-text-field
         v-for="(field, i) in fields"
         :key="`upf-${i}`"
@@ -12,7 +12,6 @@
         outlined
         class="rounded-lg"
       />
-      <common-password-policy :key="`upfpp-${i}`" :value="formData.new_password" class="mb-4 mb-md-8" />
       <div class="d-flex align-center">
         <v-spacer />
         <v-btn outlined @click="$emit('closeDialog')">
@@ -35,20 +34,14 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
-  props: {
-    editMode: {
-      type: Boolean,
-      default: false
-    }
-  },
   data () {
     return {
       valid: true,
       loading: false,
       formData: {
-        username: this.$auth.user.username ?? '',
-        new_password: '',
-        repeat_new_password: ''
+        first_name: this.$auth.user.firstName ?? '',
+        last_name: this.$auth.user.lastName ?? '',
+        email: this.$auth.user.email ?? ''
       }
     }
   },
@@ -56,41 +49,42 @@ export default {
     fields () {
       return [
         {
-          name: 'username',
-          label: 'نام کاربری',
-          dir: 'ltr',
+          name: 'first_name',
+          label: 'نام',
+          dir: 'rtl',
           type: 'text',
-          hint: 'تعیین نام کاربری الزامی است. (فقط حروف انگلیسی و اعداد)',
-          rules: [this.$rules().required, this.$rules().username]
+          persistentHint: true,
+          hint: 'نام باید فقط شامل حروف فارسی باشد',
+          rules: [this.$rules().required, this.$rules().onlyPersian]
         },
         {
-          name: 'new_password',
-          label: 'رمز عبور',
-          dir: 'ltr',
-          autofill: 'new-password',
-          type: 'password',
-          rules: [this.$rules().required],
-          showPasswordPolicy: true
+          name: 'last_name',
+          label: 'نام خانوادگی',
+          dir: 'rtl',
+          type: 'text',
+          persistentHint: true,
+          hint: 'نام خانوادگی باید فقط شامل حروف فارسی باشد',
+          rules: [this.$rules().required, this.$rules().onlyPersian]
         },
         {
-          name: 'repeat_new_password',
-          label: 'تایید رمز عبور',
+          name: 'email',
+          label: 'ایمیل',
           dir: 'ltr',
-          type: 'password',
-          rules: [this.$rules().required, this.$rules(this.formData.new_password).confirmPassword]
+          rules: [this.$rules().required, this.$rules().emailChecker]
         }
       ]
     }
   },
   methods: {
-    ...mapActions('accounts', ['_setUserPass']),
+    ...mapActions('accounts', ['_setUserInfo']),
     handleSubmit () {
-      if (!this.$refs.userPassForm.validate()) {
+      if (!this.$refs.userInfoForm.validate()) {
         return false
       }
       this.loading = true
-      this._setUserPass(this.formData).then((resp) => {
+      this._setUserInfo(this.formData).then((resp) => {
         this.$toast.success('با موفقیت انجام شد')
+        this.$auth.setUser(resp.data)
         this.$emit('closeDialog')
       }).catch((error) => {
         console.log(error)

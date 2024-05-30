@@ -33,7 +33,7 @@ export const mutations = {
 }
 export const actions = {
   _getCaptcha ({ dispatch }) {
-    return dispatch('$post', { url: $URL.captcha, key: 'captcha' }, { root: true })
+    return dispatch('$post', { url: $URL.captcha }, { root: true })
   },
   _getMenus ({ dispatch }) {
     return dispatch('$get', { url: $URL.menus, key: 'menus' }, { root: true })

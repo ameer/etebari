@@ -1,5 +1,10 @@
 <template>
   <default-layout>
+    <!-- <v-overlay :value="isLoading" :z-index="6">
+      <v-row class="fill-height" justify="center" align="center">
+        <v-progress-circular indeterminate />
+      </v-row>
+    </v-overlay> -->
     <auth-app-bar />
     <v-main class="auth-layout">
       <v-container class="fill-height pa-4">
@@ -38,6 +43,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import DefaultLayout from '~/layouts/default.vue'
 export default {
   name: 'AuhtLayout',
@@ -45,6 +51,12 @@ export default {
     DefaultLayout
   },
   middleware: 'auth',
-  auth: 'guest'
+  auth: 'guest',
+  computed: {
+    ...mapGetters(['loading']),
+    isLoading () {
+      return Object.values(this.loading).includes(true)
+    }
+  }
 }
 </script>

@@ -33,7 +33,14 @@
         <!-- <div class="pt-3">
           <auth-captcha-field v-model="formData.captcha" @updateKey="key = $event" />
         </div> -->
-        <v-btn block type="submit" color="primary" height="52" class="text-body-1 rounded-lg">
+        <v-btn
+          :loading="loading?.loginOtp"
+          block
+          type="submit"
+          color="primary"
+          height="52"
+          class="text-body-1 rounded-lg"
+        >
           ورود به سامانه
         </v-btn>
         <v-btn
@@ -51,7 +58,7 @@
   </v-card>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   layout: 'auth',
   auth: false,
@@ -62,6 +69,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['loading']),
     national_id () {
       return this.$route.params.national_id
     },
@@ -75,10 +83,10 @@ export default {
       const data = { national_id: this.national_id, otp: this.otp }
       try {
         const resp = await this._loginOTP(data)
-        this.$auth.setUserToken(resp.data.access, resp.data.refresh)
+        await this.$auth.setUserToken(resp.data.access, resp.data.refresh)
         this.$router.push('/dashboard')
       } catch (error) {
-        alert(error)
+        this.$refs.registerForm.reset()
       }
     }
   }

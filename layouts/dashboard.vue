@@ -18,12 +18,19 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import DefaultLayout from '~/layouts/default.vue'
 export default {
   name: 'DashboardLayout',
   components: {
     DefaultLayout
   },
-  middleware: 'auth'
+  middleware: 'auth',
+  mounted () {
+    this._getMenus()
+  },
+  methods: {
+    ...mapActions('core', ['_getMenus'])
+  }
 }
 </script>

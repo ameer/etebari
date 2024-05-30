@@ -1,3 +1,4 @@
+import { TYPE } from 'vue-toastification'
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -30,6 +31,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/axios.js',
     '~/plugins/helpers.js'
   ],
 
@@ -49,9 +51,46 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://auth.nuxtjs.org/guide/setup
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
+    'vue-toastification/nuxt'
   ],
-
+  toast: {
+    position: 'top-left',
+    transition: 'Vue-Toastification__slideBlurred',
+    maxToasts: 3,
+    newestOnTop: true,
+    closeOnClick: true,
+    timeout: 5000,
+    pauseOnHover: true,
+    showCloseButtonOnHover: false,
+    closeButton: 'button',
+    toastDefaults: {
+      [TYPE.SUCCESS]: {
+        icon: {
+          iconClass: 'v-icon notranslate mdi mdi-check'
+        }
+      },
+      [TYPE.WARNING]: {
+        icon: {
+          iconClass: 'v-icon notranslate mdi mdi-shield-alert-outline'
+        }
+      },
+      [TYPE.ERROR]: {
+        icon: {
+          iconClass: 'v-icon notranslate mdi mdi-shield-alert-outline'
+        }
+      }
+    },
+    rtl: true,
+    filterBeforeCreate: (toast, toasts) => {
+      if (toasts.filter(t => t.type === toast.type).length !== 0) {
+        // Returning false discards the toast
+        return false
+      }
+      // You can modify the toast if you want
+      return toast
+    }
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
@@ -78,8 +117,8 @@ export default {
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/auth/login', method: 'post' },
-          logout: { url: '/auth/logout', method: 'get' },
+          login: { url: '/authentication/login/password/', method: 'post' },
+          logout: { url: '/authentication/logout', method: 'get' },
           user: { url: '/accounts/profiles/', method: 'get' }
         }
       }

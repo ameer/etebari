@@ -6,13 +6,13 @@
       </span>
     </div>
     <div class="d-flex flex-column">
-      <v-text-field v-model="formData.national_id" :rules="[$rules().required]" label="کد ملی | شناسه ملی" outlined class="rounded" />
+      <v-text-field v-model="formData.national_id" :rules="[$rules().required, $rules().nationalCodeChecker]" label="کد ملی | شناسه ملی" outlined class="rounded" />
       <div class="pt-3">
         <auth-captcha-field v-model="formData.captcha" :rules="[$rules().required]" @updateKey="formData.key = $event" />
       </div>
       <v-btn
         :disabled="!valid"
-        :loading="loading.checkIsRegistered"
+        :loading="loading?.checkIsRegistered"
         block
         type="submit"
         color="primary"

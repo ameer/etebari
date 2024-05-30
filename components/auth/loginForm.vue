@@ -71,8 +71,8 @@ export default {
     return {
       showPassword: false,
       formData: {
-        username: 'kminchelle',
-        password: '0lelplR'
+        username: '',
+        password: ''
       },
       loading: false,
       isFormValid: false,
@@ -83,11 +83,11 @@ export default {
     async userLogin () {
       try {
         this.loading = true
-        const response = await this.$auth.loginWith('local', {
+        const resp = await this.$auth.loginWith('local', {
           data: this.formData
         })
-        this.$auth.setUser(response.data.user)
-        this.$auth.setUserToken(response.data.token)
+        await this.$auth.setUserToken(resp.data.data.access, resp.data.data.refresh)
+        this.$router.push('/dashboard')
       } catch (err) {
         console.log(err)
       } finally {

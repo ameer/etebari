@@ -15,7 +15,7 @@ export const mutations = {
     })
   },
   setLoading (state, { key, value }) {
-    state.loading[key] = value
+    state.loading = Object.assign({}, state.loading, { [key]: value })
   },
   setObject (state, { key, value }) {
     state[key] = Object.assign({}, value)
@@ -39,12 +39,16 @@ export const actions = {
           reject(error)
         })
         .finally(() => {
-          commit('setLoading', { key, value: false })
+          if (key) {
+            commit('setLoading', { key, value: false })
+          }
         })
     })
   },
   $post ({ commit }, { url, data, key, headers = {} }) {
-    commit('setLoading', { key, value: true })
+    if (key) {
+      commit('setLoading', { key, value: true })
+    }
     return new Promise((resolve, reject) => {
       this.$axios
         .post(url, data, { headers })
@@ -55,15 +59,20 @@ export const actions = {
           reject(error)
         })
         .finally(() => {
-          commit('setLoading', { key, value: false })
+          if (key) {
+            commit('setLoading', { key, value: false })
+          }
         })
     })
   },
-  $put ({ commit }, { url, data, key }) {
-    commit('setLoading', { key, value: true })
+  $put ({ commit }, { url, data, key, headers = {}, config = {} }) {
+    if (key) {
+      commit('setLoading', { key, value: true })
+    }
+    config = Object.assign({ headers }, config)
     return new Promise((resolve, reject) => {
       this.$axios
-        .put(url, data)
+        .put(url, data, config)
         .then((response) => {
           resolve(response.data)
         })
@@ -71,12 +80,16 @@ export const actions = {
           reject(error)
         })
         .finally(() => {
-          commit('setLoading', { key, value: false })
+          if (key) {
+            commit('setLoading', { key, value: false })
+          }
         })
     })
   },
   $delete ({ commit }, { url, data, mutation = false, key }) {
-    commit('setLoading', { key, value: true })
+    if (key) {
+      commit('setLoading', { key, value: true })
+    }
     return new Promise((resolve, reject) => {
       this.$axios
         .delete(url, { data })
@@ -87,7 +100,9 @@ export const actions = {
           reject(error)
         })
         .finally(() => {
-          commit('setLoading', { key, value: false })
+          if (key) {
+            commit('setLoading', { key, value: false })
+          }
         })
     })
   }

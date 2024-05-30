@@ -14,7 +14,14 @@
         <div class="pt-3">
           <auth-captcha-field v-model="formData.captcha" @updateKey="key = $event" />
         </div>
-        <v-btn block type="submit" color="primary" height="52" class="text-body-1 rounded-lg">
+        <v-btn
+          :loading="loading?.registerUser"
+          block
+          type="submit"
+          color="primary"
+          height="52"
+          class="text-body-1 rounded-lg"
+        >
           تأیید و ادامه
         </v-btn>
         <v-btn
@@ -32,7 +39,7 @@
   </v-card>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   layout: 'auth',
   auth: false,
@@ -47,6 +54,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['loading']),
     national_id () {
       return this.$route.params.national_id
     },

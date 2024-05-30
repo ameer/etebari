@@ -2,12 +2,12 @@
   <v-dialog
     :value="value"
     :content-class="$isMobile() ? 'v-bottom-sheet overflow-auto' : ''"
-    width="600"
+    :width="width"
     transition="dialog-bottom-transition"
     @input="handleInput"
   >
-    <v-sheet>
-      <div class="pa-3">
+    <v-sheet class="rounded-12">
+      <div class="pa-4">
         <div class="d-flex align-center">
           <v-spacer />
           <v-btn icon small @click.stop="handleInput(false)">
@@ -26,6 +26,10 @@ export default {
     value: {
       type: Boolean,
       default: false
+    },
+    width: {
+      type: String,
+      default: '600'
     }
   },
   methods: {

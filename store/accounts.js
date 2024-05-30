@@ -4,7 +4,9 @@ export const $URL = {
   accounts: 'accounts',
   register: 'accounts/register',
   loginOTP: 'authentication/login/otp',
-  setUserPass: 'accounts/profiles/password/'
+  setUserPass: 'accounts/profiles/password/',
+  setProfileImage: 'accounts/profiles/image/',
+  setUserInfo: 'accounts/profiles/'
 }
 
 function initialState () {
@@ -40,13 +42,22 @@ export const actions = {
   },
   _registerUser ({ dispatch }, { data, key }) {
     const url = `${$URL.register}/?key=${key}`
-    return dispatch('$post', { url, data }, { root: true })
+    return dispatch('$post', { url, data, key: 'registerUser' }, { root: true })
   },
   _loginOTP ({ dispatch }, data) {
-    return dispatch('$post', { url: $URL.loginOTP, data }, { root: true })
+    return dispatch('$post', { url: $URL.loginOTP, data, key: 'loginOtp' }, { root: true })
   },
   _setUserPass ({ dispatch }, data) {
     return dispatch('$put', { url: $URL.setUserPass, data }, { root: true })
+  },
+  _setUserImage ({ dispatch }, data) {
+    const headers = {
+      'Content-Type': 'multipart/form-data'
+    }
+    return dispatch('$put', { url: $URL.setProfileImage, data, headers }, { root: true })
+  },
+  _setUserInfo ({ dispatch }, data) {
+    return dispatch('$put', { url: $URL.setUserInfo, data }, { root: true })
   }
 
 }

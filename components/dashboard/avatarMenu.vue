@@ -1,7 +1,7 @@
 <template>
   <v-menu
     :value="value"
-    :close-on-content-click="false"
+    :close-on-content-click="true"
     :min-width="203"
     right
     bottom
@@ -18,7 +18,7 @@
       >
         <div class="d-flex align-center">
           <v-img contain src="/icons/user.svg" />
-          <span class="text-body-2 font-weight-bold mono pr-2 pl-3 text-brandPrimary-black" style="padding-top: 3px;" v-text="$auth.user.nationalId" />
+          <div class="text-body-2 font-weight-bold mono pr-2 pl-3 text-brandPrimary-black text-truncate" style="padding-top: 3px;width: 112px;" v-text="userFullName ?? nationalCode" />
           <v-icon size="20" class="text-brandPrimary-black">
             mdi-chevron-down
           </v-icon>
@@ -58,6 +58,22 @@ export default {
         { title: 'مدیریت کیف پول', to: '/dashboard/user/wallet' },
         { title: 'خروج', action: 'logout' }
       ]
+    }
+  },
+  computed: {
+    nationalCode () {
+      try {
+        return this.$auth.user.nationalId
+      } catch (error) {
+        return false
+      }
+    },
+    userFullName () {
+      try {
+        return `${this.$auth.user.firstName} ${this.$auth.user.lastName}`
+      } catch (error) {
+        return false
+      }
     }
   },
   methods: {

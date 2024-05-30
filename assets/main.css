@@ -203,3 +203,41 @@ span.circle {
   font-weight: bold !important;
   font-size: 14pt !important;
 }
+.v-input__append-inner {
+  margin: auto !important;
+}
+/* Toast Theme */
+.Vue-Toastification__container {
+  width: 320px !important;
+}
+.Vue-Toastification__toast {
+  border-radius: 10px !important;
+  width: 100% !important;
+  padding: 14px 20px !important;
+  font-family: 'Vazirmatn' !important;
+  font-size: 14px !important;
+  font-weight: normal !important;
+  line-height: 2.15;
+  align-items: center;
+}
+
+.Vue-Toastification__toast .Vue-Toastification__toast-body {
+  font-family: 'Vazirmatn' !important;
+  font-size: 14px !important;
+  font-weight: normal !important;
+}
+
+.Vue-Toastification__progress-bar::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  transform: scaleX(100);
+}
+
+.Vue-Toastification__icon {
+  font-size: 20px !important;
+  margin: 0 0 0 10px !important;
+}

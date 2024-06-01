@@ -63,10 +63,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions('accounts', ['_registerUser']),
+    ...mapActions('accounts', ['_registerUser', '_changePhone']),
     registerUser () {
       const data = { national_id: this.national_id, ...this.formData }
-      this._registerUser({ data, key: this.key }).then((resp) => {
+      let action = '_registerUser'
+      if (this.isEditNumber) {
+        action = '_changePhone'
+      }
+      this[action]({ data, key: this.key }).then((resp) => {
         this.$router.push({ name: 'auth-login-otp', params: { national_id: this.national_id, phone_number: this.formData.phone_number } })
       })
     }

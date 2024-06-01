@@ -6,7 +6,8 @@ export const $URL = {
   loginOTP: 'authentication/login/otp',
   setUserPass: 'accounts/profiles/password/',
   setProfileImage: 'accounts/profiles/image/',
-  setUserInfo: 'accounts/profiles/'
+  setUserInfo: 'accounts/profiles/',
+  changePhone: 'accounts/phone/'
 }
 
 function initialState () {
@@ -58,6 +59,10 @@ export const actions = {
   },
   _setUserInfo ({ dispatch }, data) {
     return dispatch('$put', { url: $URL.setUserInfo, data }, { root: true })
+  },
+  _changePhone ({ dispatch }, { data, key }) {
+    const url = `${$URL.changePhone}?key=${key}`
+    return dispatch('$put', { url, data }, { root: true })
   }
 
 }

@@ -9,9 +9,17 @@
           left
           color="transparent"
           offset-y="36"
+          offset-x="40"
         >
           <template #badge>
-            <v-btn :loading="isUploading" fab x-small color="gray-100 lighten-2" @click.stop="openFileUploader">
+            <v-btn
+              :loading="isUploading"
+              fab
+              x-small
+              dark
+              color="indigo"
+              @click.stop="openFileUploader"
+            >
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
           </template>
@@ -42,6 +50,31 @@
         <v-btn large color="primary" class="rounded-lg elevation-0 mr-8" @click.stop="openUserPassDialog">
           {{ editUsernameBtnText }}
         </v-btn>
+      </div>
+      <v-divider />
+      <div class="pa-4">
+        <span class="font-weight-bold text-fs-18">اطلاعات کسب‌وکار</span><div class="d-flex align-center py-4 mt-2">
+          <svg
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="ml-2"
+          ><path d="M12 22.5C17.5228 22.5 22 18.0228 22 12.5C22 6.97715 17.5228 2.5 12 2.5C6.47715 2.5 2 6.97715 2 12.5C2 18.0228 6.47715 22.5 12 22.5Z" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M12 16.5V12.5" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M12 8.5H12.01" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="text-xs text-brandPrimary-black">اطلاعات کسب‌وکار شما ثبت نشده‌ است. به منظور استفاده از بخش گزارش اعتباری مشتریان من باید اطلاعات کسب‌وکار خود را ثبت نمایید.</span>
+        </div>
+        <div class="d-flex align-center justify-end">
+          <v-btn
+            color="indigo"
+            height="46"
+            width="208"
+            dark
+            class="rounded-lg"
+            to="/dashboard/user/signup-business"
+          >
+            ثبت اطلاعات کسب و کار
+          </v-btn>
+        </div>
       </div>
     </div>
     <common-dialog v-model="dialog" width="468">

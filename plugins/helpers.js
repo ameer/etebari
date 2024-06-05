@@ -48,7 +48,7 @@ export default (context, inject) => {
         }
       },
       onlyPersian: v =>
-        /^[\u0600-\u06EF\s]+$/u.test(v) || 'فقط حروف فارسی مجاز است',
+        !v || /^[\u0600-\u06EF\s]+$/u.test(v) || 'فقط حروف فارسی مجاز است',
       mobilePhoneChecker: (v) => {
         return !v || /^09\d{9}$/.test(_d(v)) || 'شماره تلفن معتبر نیست'
       },

@@ -25,7 +25,7 @@
               <div class="whitespace-nowrap text-sm font-weight-bold mt-3" /><div class="my-4">
                 <div class="d-flex justify-start align-center">
                   <span class="w-72">شماره ملی</span>
-                  <span class=" font-weight-bold w-12 primaryBlack--text">5030049681</span>
+                  <span class=" font-weight-bold w-12 primaryBlack--text">{{ $auth.user.nationalId }}</span>
                 </div>
               </div>
               <div class="my-4">

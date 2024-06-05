@@ -4,57 +4,46 @@ $btn-letter-spacing: normal;
 $tabs-item-letter-spacing: normal;
 $material-light: (
   "background": #f9fafb,
+  "text": (
+    "primary": #454555
+  )
 );
 $container-max-widths: (
   "lg": 1280px,
   "xl": 1280px,
 );
 $headings: (
-  "h1": (
-    "letter-spacing": normal,
+  "h1": ("letter-spacing": normal,
   ),
-  "h2": (
-    "letter-spacing": normal,
+  "h2": ("letter-spacing": normal,
   ),
-  "h3": (
-    "letter-spacing": normal,
+  "h3": ("letter-spacing": normal,
   ),
-  "h4": (
-    "letter-spacing": normal,
+  "h4": ("letter-spacing": normal,
   ),
-  "h5": (
-    "letter-spacing": normal,
+  "h5": ("letter-spacing": normal,
   ),
-  "h6": (
-    "letter-spacing": normal,
+  "h6": ("letter-spacing": normal,
   ),
-  "subtitle-1": (
-    "letter-spacing": normal,
+  "subtitle-1": ("letter-spacing": normal,
   ),
-  "subtitle-2": (
-    "letter-spacing": normal,
+  "subtitle-2": ("letter-spacing": normal,
   ),
-  "fs-18": (
-    "size": 1.125rem,
+  "fs-18": ("size": 1.125rem,
     "weight": normal,
     "line-height": normal,
     "letter-spacing": normal,
     "font-family": $body-font-family,
     "text-transform": false,
   ),
-  "body-1": (
-    "letter-spacing": normal,
+  "body-1": ("letter-spacing": normal,
   ),
-  "body-2": (
-    "letter-spacing": normal,
+  "body-2": ("letter-spacing": normal,
   ),
-  "button": (
-    "letter-spacing": normal,
+  "button": ("letter-spacing": normal,
   ),
-  "caption": (
-    "letter-spacing": normal,
+  "caption": ("letter-spacing": normal,
   ),
-  "overline": (
-    "letter-spacing": normal,
+  "overline": ("letter-spacing": normal,
   ),
 );

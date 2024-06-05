@@ -153,7 +153,9 @@ a {
 .bg-brandPrimary-silver {
   background-color: rgb(244 245 249 / 1);
 }
-
+.bg-brandPrimary-main {
+  background-color: rgb(77 89 153 / 1);
+}
 .border-gray-100 {
   border: 1px solid rgb(243 244 246 / 1);
 }
@@ -305,4 +307,67 @@ span.circle {
 }
 .custom-text-field.v-text-field--outlined label {
   top: 14px !important;
+}
+.upload-area {
+  border-color: #4d5999 !important;
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-bottom-width: 0 !important;
+  background-color: rgb(77 89 153 / 20%) !important;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+path.upload-icon {
+  fill: #bfbfbf !important;
+}
+.drop-outline-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+.drop-outline-path {
+  fill: none;
+  stroke-dasharray: 13.5, 11;
+  stroke: #a2acb4;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke 0.2s ease-in-out;
+  stroke-dashoffset: 0;
+}
+.upload-area.drag-over,
+.upload-area.drag-over path.upload-icon {
+  color: #134ad4 !important;
+  fill: #134ad4 !important;
+}
+.upload-area.drag-over .drop-outline-path {
+  animation: drop-outline-move 0.5s linear infinite;
+  stroke: #134ad4;
+}
+@keyframes drop-outline-move {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -24.5;
+  }
+}
+
+.required label::after {
+  content: '*';
+  color: red;
+  margin-right: 4px;
+}
+.text-underline {
+  text-decoration: none !important;
+  border-bottom: 1px solid currentColor !important;
 }

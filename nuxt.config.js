@@ -118,7 +118,7 @@ export default {
         },
         endpoints: {
           login: { url: '/authentication/login/password/', method: 'post' },
-          logout: { url: '/authentication/logout', method: 'get' },
+          logout: { url: '/authentication/logout', method: 'post' },
           user: { url: '/accounts/profiles/', method: 'get' }
         }
       }

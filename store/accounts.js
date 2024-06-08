@@ -1,4 +1,12 @@
 /* eslint-disable camelcase */
+const addTSP = (number, isFloat = false, absolute = false) => {
+  let result = isFloat ? parseFloat(number) : parseInt(number)
+  result = absolute ? Math.abs(number) : number
+  if (isNaN(result)) {
+    return number
+  }
+  return Intl.NumberFormat('fa-IR').format(result)
+}
 export const $URL = {
   // check account registered before
   accounts: 'accounts',
@@ -67,5 +75,8 @@ export const actions = {
 
 }
 export const getters = {
-  loading: state => state.loading
+  loading: state => state.loading,
+  userBalance (_state, _getters, rootState) {
+    return addTSP(rootState.auth.user?.amount)
+  }
 }

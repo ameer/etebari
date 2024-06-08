@@ -25,7 +25,7 @@
         </div>
         <div class="d-flex align-center">
           <v-img contain src="/icons/wallet.svg" max-width="18" max-heigh="19" />
-          <span class="text-body-2 font-weight-bold mono pr-2 pl-3 text-brandPrimary-black" style="padding-top: 3px;" v-text="$auth.user.amount" />
+          <span class="text-body-2 font-weight-bold mono pr-2 pl-3 text-brandPrimary-black" style="padding-top: 3px;" v-text="userBalance" />
           <v-spacer />
           <span class="text-caption text--disabled">ريال</span>
         </div>
@@ -44,6 +44,7 @@
   </v-menu>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: {
     value: {
@@ -61,6 +62,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('accounts', ['userBalance']),
     nationalCode () {
       try {
         return this.$auth.user.nationalId

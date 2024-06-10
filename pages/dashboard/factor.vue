@@ -171,7 +171,7 @@ export default {
       try {
         const resp = await this._initUserPayment(this.formData)
         if (resp.data) {
-          // window.location.href = resp.data.redirectUrl
+          window.location.href = resp.data.redirectUrl
         }
       } catch (error) {
         this.$toast.error('خطا در اتصال به درگاه')

@@ -7,7 +7,8 @@ export const $URL = {
 function initialState () {
   return {
     loading: {
-    }
+    },
+    userBusiness: {}
   }
 }
 export const state = initialState
@@ -31,10 +32,18 @@ export const mutations = {
   }
 }
 export const actions = {
+  _getBusinessForUser ({ dispatch, commit }) {
+    return dispatch('$get', { url: $URL.getBusinesses, key: 'getBusiness' }, { root: true }).then((resp) => {
+      commit('setObject', { key: 'userBusiness', value: resp.data })
+      return resp
+    })
+  },
   _updateBusiness ({ dispatch }, data) {
     return dispatch('$post', { url: $URL.createUpdateBusiness, data, key: 'business', headers: { 'Content-Type': 'multipart/form-data' } }, { root: true })
   }
 }
 export const getters = {
-  loading: state => state.loading
+  loading: state => state.loading,
+  userBusiness: state => state.userBusiness,
+  businessStatus: (state, { userBusiness }) => userBusiness.status ?? false
 }

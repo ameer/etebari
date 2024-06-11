@@ -21,7 +21,7 @@
       contain
       max-height="56"
       :loading="loading"
-      width="90"
+      width="128"
       lazy-src="/captcha.jpg"
       alt="captcha"
       :src="captchaImg"

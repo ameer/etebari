@@ -61,15 +61,21 @@
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             class="ml-2"
-          ><path d="M12 22.5C17.5228 22.5 22 18.0228 22 12.5C22 6.97715 17.5228 2.5 12 2.5C6.47715 2.5 2 6.97715 2 12.5C2 18.0228 6.47715 22.5 12 22.5Z" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M12 16.5V12.5" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M12 8.5H12.01" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="text-xs text-brandPrimary-black">اطلاعات کسب‌وکار شما ثبت نشده‌ است. به منظور استفاده از بخش گزارش اعتباری مشتریان من باید اطلاعات کسب‌وکار خود را ثبت نمایید.</span>
+          ><path d="M12 22.5C17.5228 22.5 22 18.0228 22 12.5C22 6.97715 17.5228 2.5 12 2.5C6.47715 2.5 2 6.97715 2 12.5C2 18.0228 6.47715 22.5 12 22.5Z" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M12 16.5V12.5" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M12 8.5H12.01" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+
+          <span v-if="!businessStatus" class="text-xs text-brandPrimary-black">اطلاعات کسب‌وکار شما ثبت نشده‌ است. به منظور استفاده از بخش گزارش اعتباری مشتریان من باید اطلاعات کسب‌وکار خود را ثبت نمایید.</span>
+          <div v-else class="text-xs text-brandPrimary-black lh-32">
+            اطلاعات کسب‌وکار شما <v-chip>{{ businessStatus.title }}</v-chip> است.
+          </div>
         </div>
         <div class="d-flex align-center justify-end">
           <v-btn
             color="indigo"
             height="46"
             width="208"
-            dark
-            class="rounded-lg"
+            :disabled="businessStatus"
+            :loading="$fetchState.pending"
+            class="rounded-lg white--text"
             to="/dashboard/user/signup-business"
           >
             ثبت اطلاعات کسب و کار
@@ -94,7 +100,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   layout: 'dashboard',
   data () {
@@ -106,7 +112,11 @@ export default {
       editMode: false
     }
   },
+  async fetch () {
+    await this._getBusinessForUser()
+  },
   computed: {
+    ...mapGetters('business', ['userBusiness', 'businessStatus']),
     nationalCode () {
       try {
         return this.$auth.user.nationalId
@@ -154,6 +164,7 @@ export default {
   },
   methods: {
     ...mapActions('accounts', ['_setUserImage']),
+    ...mapActions('business', ['_getBusinessForUser']),
     openUserPassDialog () {
       this.editMode = true
       this.dialogComponent = 'dashboardProfileUserPassForm'

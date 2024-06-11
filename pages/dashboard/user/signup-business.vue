@@ -258,6 +258,7 @@ export default {
       this.loading = true
       this._updateBusiness(this.formData).then((resp) => {
         this.$toast.success('اطلاعات کسب و کار با موفقیت بارگذاری شد.')
+        this.$router.push('/dashboard/user/profile')
       }).catch((err) => {
         this.$toast.error(err)
       }).finally(() => {

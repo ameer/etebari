@@ -25,6 +25,9 @@ export const mutations = {
   }
 }
 export const actions = {
+  _resetState ({ commit }) {
+    commit('business/resetState')
+  },
   $get ({ commit }, { url, key }) {
     if (key) {
       commit('setLoading', { key, value: true })
@@ -37,6 +40,7 @@ export const actions = {
         })
         .catch((error) => {
           reject(error)
+          return error
         })
         .finally(() => {
           if (key) {

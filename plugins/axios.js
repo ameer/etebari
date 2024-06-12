@@ -12,7 +12,7 @@ export default function (ctx) {
             msg = err.response.data.detail
           }
         }
-        if (err.response.data.code !== 2000) { // User not found, check for registered before
+        if (err.response.data.code !== 2000 && err.response.data.code !== 3000) { // User or business not found, check for registered before
           ctx.$toast.error(msg, { singleton: true })
         }
         throw err

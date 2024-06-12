@@ -195,12 +195,12 @@ span.circle {
   border-color: rgb(229, 231, 235);
 }
 
-.custom-select {
-  background-color: rgb(249, 250, 251);
+.filter-btn {
+  background-color: rgb(249, 250, 251) !important;
 }
 
-.custom-select fieldset {
-  border-color: rgb(209, 213, 219);
+.filter-btn.v-btn.v-btn--outlined {
+  border-color: rgb(209, 213, 219) !important;
 }
 .leading-3 {
   line-height: 0.75rem !important;
@@ -278,7 +278,7 @@ path.upload-icon {
 }
 
 .required label::after {
-  content: '*';
+  content: "*";
   color: red;
   margin-right: 4px;
 }

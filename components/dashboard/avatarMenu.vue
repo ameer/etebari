@@ -44,7 +44,7 @@
   </v-menu>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   props: {
     value: {
@@ -71,17 +71,19 @@ export default {
       }
     },
     userFullName () {
-      try {
+      if (this.$auth.user.firstName && this.$auth.user.lastName) {
         return `${this.$auth.user.firstName} ${this.$auth.user.lastName}`
-      } catch (error) {
+      } else {
         return false
       }
     }
   },
   methods: {
+    ...mapActions(['_resetState']),
     evoke (action) {
       if (action === 'logout') {
         this.$auth.logout()
+        this._resetState()
       }
     }
   }

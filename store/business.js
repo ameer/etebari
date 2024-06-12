@@ -36,10 +36,14 @@ export const actions = {
     return dispatch('$get', { url: $URL.getBusinesses, key: 'getBusiness' }, { root: true }).then((resp) => {
       commit('setObject', { key: 'userBusiness', value: resp.data })
       return resp
+    }).catch((error) => {
+      throw error
     })
   },
-  _updateBusiness ({ dispatch }, data) {
-    return dispatch('$post', { url: $URL.createUpdateBusiness, data, key: 'business', headers: { 'Content-Type': 'multipart/form-data' } }, { root: true })
+  _updateBusiness ({ dispatch, commit }, data) {
+    return dispatch('$post', { url: $URL.createUpdateBusiness, data, key: 'business', headers: { 'Content-Type': 'multipart/form-data' } }, { root: true }).then((resp) => {
+      commit('setObject', { key: 'userBusiness', value: resp.data })
+    })
   }
 }
 export const getters = {

@@ -29,11 +29,11 @@
       </v-tab-item>
       <v-tab-item class="fill-height">
         <div class="d-flex flex-column align-center fill-height">
-          <div class="d-flex align-center pa-4" style="gap:16px;">
+          <div class="d-flex align-center fill-width pa-4" style="gap:16px;">
             <div class="d-flex align-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 3H2L10 12.46V19L14 21V12.46L22 3Z" stroke="#454555" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="pr-1">فیلترها</span>
             </div>
-            <v-select
+            <!-- <v-select
               v-for="(filter, i) in filters"
               :key="`fs-${i}`"
               dense
@@ -41,6 +41,12 @@
               outlined
               class="custom-select"
               :label="filter.title"
+            /> -->
+            <dashboard-filter-btn
+              v-for="(filter, i) in filters"
+              :id="`filter-btn-${i}`"
+              :key="`fs-${i}`"
+              :filter="filter"
             />
           </div>
           <div class="d-flex justify-center align-center flex-column w-full mx-auto fill-height">
@@ -64,6 +70,9 @@ export default {
   data () {
     return {
       tab: 0,
+      comp: '',
+      menuActivator: null,
+      menu: false,
       filters: [
         { title: 'شماره ملی' },
         { title: 'نوع شخص' },
@@ -72,6 +81,25 @@ export default {
         { title: 'شناسه یکتا گزارش' },
         { title: 'بازه زمانی درخواستی' }
       ]
+    }
+  },
+  methods: {
+    openFilterMenu (activatorId, filter) {
+      if (this.menu === true && activatorId === this.menuActivator) {
+        this.menu = false
+      }
+      if (activatorId !== this.menuActivator) {
+        this.menuActivator = activatorId
+        this.comp = filter
+        setTimeout(() => {
+          this.menu = true
+        })
+      }
+    },
+    handleMenuInput (e) {
+      if (e === false) {
+        this.menu = false
+      }
     }
   }
 }

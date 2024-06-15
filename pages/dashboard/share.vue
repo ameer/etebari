@@ -16,16 +16,7 @@
     </v-tabs>
     <v-tabs-items v-model="tab" class="fill-height">
       <v-tab-item class="fill-height">
-        <div class="d-flex justify-center align-center flex-column w-full fill-height mx-auto">
-          <svg width="192" height="113" viewBox="0 0 192 113" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M173.5 12C177.366 12 180.5 15.134 180.5 19C180.5 22.866 177.366 26 173.5 26H133.5C137.366 26 140.5 29.134 140.5 33C140.5 36.866 137.366 40 133.5 40H155.5C159.366 40 162.5 43.134 162.5 47C162.5 50.866 159.366 54 155.5 54H145.326C140.452 54 136.5 57.134 136.5 61C136.5 63.5773 138.5 65.9107 142.5 68C146.366 68 149.5 71.134 149.5 75C149.5 78.866 146.366 82 142.5 82H59.5C55.634 82 52.5 78.866 52.5 75C52.5 71.134 55.634 68 59.5 68H20.5C16.634 68 13.5 64.866 13.5 61C13.5 57.134 16.634 54 20.5 54H60.5C64.366 54 67.5 50.866 67.5 47C67.5 43.134 64.366 40 60.5 40H35.5C31.634 40 28.5 36.866 28.5 33C28.5 29.134 31.634 26 35.5 26H75.5C71.634 26 68.5 22.866 68.5 19C68.5 15.134 71.634 12 75.5 12H173.5ZM173.5 40C177.366 40 180.5 43.134 180.5 47C180.5 50.866 177.366 54 173.5 54C169.634 54 166.5 50.866 166.5 47C166.5 43.134 169.634 40 173.5 40Z" fill="#F3F7FF" /><path d="M87 80C105.502 80 120.5 65.0015 120.5 46.5C120.5 27.9985 105.502 13 87 13C68.4985 13 53.5 27.9985 53.5 46.5C53.5 65.0015 68.4985 80 87 80Z" fill="#F3F7FF" stroke="#4D5999" stroke-width="2.5" /><path fill-rule="evenodd" clip-rule="evenodd" d="M81.6321 72.4939C83.3908 72.8185 85.1801 72.9872 87 73C101.636 73 113.5 61.1355 113.5 46.5C113.5 31.8645 101.636 20 87 20C83.2404 20 79.6636 20.7829 76.4238 22.1946C70.7938 24.6479 66.1816 28.9999 63.396 34.4419C61.5445 38.0589 60.5 42.1575 60.5 46.5C60.5 50.44 61.3599 54.1792 62.9021 57.5401C64.0032 59.9396 65.4521 62.1463 67.1843 64.0956" fill="white" /><path d="M81.6321 72.4939C83.3908 72.8185 85.1801 72.9872 87 73C101.636 73 113.5 61.1355 113.5 46.5C113.5 31.8645 101.636 20 87 20C83.2404 20 79.6636 20.7829 76.4238 22.1946C70.7938 24.6479 66.1816 28.9999 63.396 34.4419C61.5445 38.0589 60.5 42.1575 60.5 46.5C60.5 50.44 61.3599 54.1792 62.9021 57.5401C64.0032 59.9396 65.4521 62.1463 67.1843 64.0956" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" /><path d="M70.2969 67.0742C72.445 68.8202 74.8718 70.2365 77.5003 71.2461" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" /><path d="M114.5 73L120.5 79" stroke="#4D5999" stroke-width="2.5" /><path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M119.531 78.0309C117.638 79.9236 117.638 82.9923 119.531 84.885L130.616 95.9703C132.509 97.863 135.578 97.863 137.47 95.9703C139.363 94.0776 139.363 91.0089 137.47 89.1162L126.385 78.0309C124.492 76.1381 121.424 76.1381 119.531 78.0309Z"
-            fill="#E8F0FE"
-            stroke="#4D5999"
-            stroke-width="2.5"
-          /><path d="M124.5 80L135.5 91" stroke="white" stroke-width="2.5" stroke-linecap="round" /><path fill-rule="evenodd" clip-rule="evenodd" d="M80.5005 35.0005C80.5005 46.5985 89.9025 56.0005 101.501 56.0005C103.779 56.0005 105.972 55.6377 108.027 54.9667C104.674 63.2876 96.523 69.1612 87.0005 69.1612C74.4854 69.1612 64.3398 59.0157 64.3398 46.5005C64.3398 35.1601 72.6702 25.7653 83.5455 24.1016C81.6135 27.2798 80.5005 31.0102 80.5005 35.0005Z" fill="#E8F0FE" /><path d="M87.5 28C86.2266 28 84.9825 28.1253 83.7793 28.3642M80.1447 29.4761C73.3039 32.3508 68.5 39.1144 68.5 47" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" /><path d="M140.676 46.7773H132.5M147 39H129.824H147ZM154 39H151.779H154Z" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M50.6763 68.7773H42.5005M46.0005 60H28.8247H46.0005ZM23.0005 60H18.7793H23.0005Z" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="my-2">داده‌ای برای نمایش وجود ندارد!</span>
-        </div>
+        <dashboard-empty-report />
       </v-tab-item>
       <v-tab-item class="fill-height">
         <div class="d-flex flex-column align-center fill-height">
@@ -33,32 +24,46 @@
             <div class="d-flex align-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 3H2L10 12.46V19L14 21V12.46L22 3Z" stroke="#454555" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="pr-1">فیلترها</span>
             </div>
-            <!-- <v-select
-              v-for="(filter, i) in filters"
-              :key="`fs-${i}`"
-              dense
-              hide-details
-              outlined
-              class="custom-select"
-              :label="filter.title"
-            /> -->
             <dashboard-filter-btn
               v-for="(filter, i) in filters"
               :id="`filter-btn-${i}`"
               :key="`fs-${i}`"
               :filter="filter"
+              @submitFilter="submitFilter"
             />
           </div>
-          <div class="d-flex justify-center align-center flex-column w-full mx-auto fill-height">
-            <svg width="192" height="113" viewBox="0 0 192 113" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M173.5 12C177.366 12 180.5 15.134 180.5 19C180.5 22.866 177.366 26 173.5 26H133.5C137.366 26 140.5 29.134 140.5 33C140.5 36.866 137.366 40 133.5 40H155.5C159.366 40 162.5 43.134 162.5 47C162.5 50.866 159.366 54 155.5 54H145.326C140.452 54 136.5 57.134 136.5 61C136.5 63.5773 138.5 65.9107 142.5 68C146.366 68 149.5 71.134 149.5 75C149.5 78.866 146.366 82 142.5 82H59.5C55.634 82 52.5 78.866 52.5 75C52.5 71.134 55.634 68 59.5 68H20.5C16.634 68 13.5 64.866 13.5 61C13.5 57.134 16.634 54 20.5 54H60.5C64.366 54 67.5 50.866 67.5 47C67.5 43.134 64.366 40 60.5 40H35.5C31.634 40 28.5 36.866 28.5 33C28.5 29.134 31.634 26 35.5 26H75.5C71.634 26 68.5 22.866 68.5 19C68.5 15.134 71.634 12 75.5 12H173.5ZM173.5 40C177.366 40 180.5 43.134 180.5 47C180.5 50.866 177.366 54 173.5 54C169.634 54 166.5 50.866 166.5 47C166.5 43.134 169.634 40 173.5 40Z" fill="#F3F7FF" /><path d="M87 80C105.502 80 120.5 65.0015 120.5 46.5C120.5 27.9985 105.502 13 87 13C68.4985 13 53.5 27.9985 53.5 46.5C53.5 65.0015 68.4985 80 87 80Z" fill="#F3F7FF" stroke="#4D5999" stroke-width="2.5" /><path fill-rule="evenodd" clip-rule="evenodd" d="M81.6321 72.4939C83.3908 72.8185 85.1801 72.9872 87 73C101.636 73 113.5 61.1355 113.5 46.5C113.5 31.8645 101.636 20 87 20C83.2404 20 79.6636 20.7829 76.4238 22.1946C70.7938 24.6479 66.1816 28.9999 63.396 34.4419C61.5445 38.0589 60.5 42.1575 60.5 46.5C60.5 50.44 61.3599 54.1792 62.9021 57.5401C64.0032 59.9396 65.4521 62.1463 67.1843 64.0956" fill="white" /><path d="M81.6321 72.4939C83.3908 72.8185 85.1801 72.9872 87 73C101.636 73 113.5 61.1355 113.5 46.5C113.5 31.8645 101.636 20 87 20C83.2404 20 79.6636 20.7829 76.4238 22.1946C70.7938 24.6479 66.1816 28.9999 63.396 34.4419C61.5445 38.0589 60.5 42.1575 60.5 46.5C60.5 50.44 61.3599 54.1792 62.9021 57.5401C64.0032 59.9396 65.4521 62.1463 67.1843 64.0956" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" /><path d="M70.2969 67.0742C72.445 68.8202 74.8718 70.2365 77.5003 71.2461" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" /><path d="M114.5 73L120.5 79" stroke="#4D5999" stroke-width="2.5" /><path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M119.531 78.0309C117.638 79.9236 117.638 82.9923 119.531 84.885L130.616 95.9703C132.509 97.863 135.578 97.863 137.47 95.9703C139.363 94.0776 139.363 91.0089 137.47 89.1162L126.385 78.0309C124.492 76.1381 121.424 76.1381 119.531 78.0309Z"
-              fill="#E8F0FE"
-              stroke="#4D5999"
-              stroke-width="2.5"
-            /><path d="M124.5 80L135.5 91" stroke="white" stroke-width="2.5" stroke-linecap="round" /><path fill-rule="evenodd" clip-rule="evenodd" d="M80.5005 35.0005C80.5005 46.5985 89.9025 56.0005 101.501 56.0005C103.779 56.0005 105.972 55.6377 108.027 54.9667C104.674 63.2876 96.523 69.1612 87.0005 69.1612C74.4854 69.1612 64.3398 59.0157 64.3398 46.5005C64.3398 35.1601 72.6702 25.7653 83.5455 24.1016C81.6135 27.2798 80.5005 31.0102 80.5005 35.0005Z" fill="#E8F0FE" /><path d="M87.5 28C86.2266 28 84.9825 28.1253 83.7793 28.3642M80.1447 29.4761C73.3039 32.3508 68.5 39.1144 68.5 47" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" /><path d="M140.676 46.7773H132.5M147 39H129.824H147ZM154 39H151.779H154Z" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M50.6763 68.7773H42.5005M46.0005 60H28.8247H46.0005ZM23.0005 60H18.7793H23.0005Z" stroke="#4D5999" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="my-2">داده‌ای برای نمایش وجود ندارد!</span>
+          <div v-if="Object.keys(activeFilters).length > 0" class="d-flex align-center justify-start fill-width flex-wrap">
+            <v-chip
+              v-for="(value, key, i) in activeFilters"
+              :key="`af-${i}`"
+              class="ma-2 custom-color-chip"
+              close
+              color="#4d5999"
+              outlined
+              :close-icon="'mdi-close'"
+              @click:close="removeActiveFilter(key)"
+            >
+              <span class="ml-1">{{ t(key) }}:</span>
+              <span v-if="typeof value === 'string'">{{ value }}</span>
+              <div v-else-if="value instanceof Array" class="d-flex align-center">
+                <span v-for="(v, j) in value" :key="`afv-${i}-${j}`" class="ml-1">
+                  {{ t(key, v) }}
+                  <template v-if="j + 1 < value.length">
+                    <span>
+                      ،
+                    </span>
+                  </template>
+                </span>
+              </div>
+            </v-chip>
+            <v-btn text color="error" @click="removeAllFilters">
+              <v-icon left>
+                mdi-delete-outline
+              </v-icon>
+              <span>حدف فیلترها</span>
+            </v-btn>
           </div>
+          <dashboard-empty-report />
         </div>
       </v-tab-item>
     </v-tabs-items>
@@ -69,18 +74,117 @@ export default {
   layout: 'dashboard',
   data () {
     return {
-      tab: 0,
+      activeFilters: {},
+      tab: 1,
       comp: '',
       menuActivator: null,
       menu: false,
       filters: [
-        { title: 'شماره ملی' },
-        { title: 'نوع شخص' },
-        { title: 'وضعیت درخواست' },
-        { title: 'نوع درخواست' },
-        { title: 'شناسه یکتا گزارش' },
-        { title: 'بازه زمانی درخواستی' }
-      ]
+        { title: 'شماره ملی', comp: 'text-box', model: 'customer_national_code' },
+        {
+          title: 'نوع شخص',
+          comp: 'check-box',
+          model: 'customer_type',
+          options: [
+            { title: 'شخص حقیقی', id: 1 },
+            { title: 'شخص حقوقی', id: 2 }
+          ]
+        },
+        {
+          title: 'وضعیت درخواست',
+          comp: 'check-box',
+          model: 'request_status',
+          options: [
+            {
+              id: 1,
+              title: 'ایجاد شده'
+            },
+            {
+              id: 2,
+              title: 'در انتظار پرداخت'
+            },
+            {
+              id: 3,
+              title: 'پرداخت ناموفق'
+            },
+            {
+              id: 4,
+              title: 'پرداخت موفق'
+            },
+            {
+              id: 5,
+              title: 'درخواست معتبر'
+            },
+            {
+              id: 10,
+              title: 'شروع درخواست'
+            },
+            {
+              id: 11,
+              title: 'خطا'
+            },
+            {
+              id: 12,
+              title: 'در حال آماده سازی گزارش'
+            }
+          ]
+        },
+        {
+          title: 'نوع درخواست',
+          comp: 'check-box',
+          model: 'share_type',
+          options: [
+            {
+              id: 1,
+              title: 'گزارش اعتباری'
+            },
+            {
+              id: 2,
+              title: 'اشتراک گذاری با رمز یکبار مصرف'
+            },
+            {
+              id: 3,
+              title: 'دعوت به اشتراک گذاری'
+            },
+            {
+              id: 4,
+              title: 'اشتراک گذاری سریع'
+            }
+          ]
+        },
+        { title: 'شناسه یکتا گزارش', comp: 'text-box', model: 'report_code' }
+        // { title: 'بازه زمانی درخواستی', comp: 'text-box', model: 'from_date' }
+      ],
+      translateObject: {
+        customer_national_code: 'شماره ملی',
+        customer_type: 'نوع شخص',
+        request_status: 'وضعیت درخواست',
+        share_type: 'نوع درخواست',
+        report_code: 'شناسه یکتا گزارش',
+        from_date: 'بازه زمانی درخواستی'
+      },
+      enumTranslate: {
+        customer_type: {
+          1: 'شخص حقیقی',
+          2: 'شخص حقوقی'
+        },
+        request_status: {
+          1: 'ایجاد شده',
+          2: 'در انتظار پرداخت',
+          3: 'پرداخت ناموفق',
+          4: 'پرداخت موفق',
+          5: 'درخواست معتبر',
+          10: 'شروع درخواست',
+          11: 'خطا',
+          12: 'در حال آماده سازی گزارش'
+        },
+        share_type: {
+          1: 'گزارش اعتباری',
+          2: 'اشتراک گذاری با رمز یکبار مصرف',
+          3: 'دعوت به اشتراک گذاری',
+          4: 'اشتراک گذاری سریع'
+        }
+      }
     }
   },
   methods: {
@@ -99,6 +203,26 @@ export default {
     handleMenuInput (e) {
       if (e === false) {
         this.menu = false
+      }
+    },
+    submitFilter (formData) {
+      if (Object.keys(formData).length !== 0) {
+        this.activeFilters = Object.assign({}, this.activeFilters, formData)
+      }
+    },
+    removeActiveFilter (key) {
+      const temp = { ...this.activeFilters }
+      delete temp[key]
+      this.activeFilters = Object.assign({}, temp)
+    },
+    removeAllFilters () {
+      this.activeFilters = Object.assign({}, {})
+    },
+    t (key, subkey = false) {
+      if (subkey) {
+        return this.enumTranslate[key][subkey]
+      } else {
+        return this.translateObject[key]
       }
     }
   }

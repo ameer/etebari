@@ -286,3 +286,7 @@ path.upload-icon {
   text-decoration: none !important;
   border-bottom: 1px solid currentColor !important;
 }
+.custom-color-chip {
+  background-color: #EDEEF5;
+  border: 1px solid #4d5999;
+}

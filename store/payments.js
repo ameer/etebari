@@ -13,7 +13,7 @@ function initialState () {
   return {
     loading: {
     },
-    callbackURL: 'http://localhost:3000/dashboard/factor'
+    callbackURL: '/dashboard/factor'
   }
 }
 export const state = initialState

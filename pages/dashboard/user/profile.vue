@@ -130,7 +130,11 @@ export default {
     },
     userFullName () {
       try {
-        return `${this.$auth.user.firstName} ${this.$auth.user.lastName}`
+        if (this.$auth.user.firstName && this.$auth.user.lastName) {
+          return `${this.$auth.user.firstName} ${this.$auth.user.lastName}`
+        } else {
+          return false
+        }
       } catch (error) {
         return false
       }

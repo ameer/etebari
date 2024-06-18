@@ -18,7 +18,7 @@
       >
         <div class="d-flex align-center">
           <v-img contain src="/icons/user.svg" />
-          <div class="text-body-2 font-weight-bold mono pr-2 pl-3 text-brandPrimary-black text-truncate" style="padding-top: 3px;width: 112px;" v-text="userFullName ?? nationalCode" />
+          <div class="text-body-2 font-weight-bold mono pr-2 pl-3 text-brandPrimary-black text-truncate" style="padding-top: 3px;width: 112px;" v-text="userFullName || nationalCode" />
           <v-icon size="20" class="text-brandPrimary-black">
             mdi-chevron-down
           </v-icon>

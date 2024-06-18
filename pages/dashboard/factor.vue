@@ -167,7 +167,7 @@ export default {
     },
     async submitFactor () {
       this.loading = true
-      this.formData.callback_url = this.callbackURL
+      this.formData.callback_url = window.location.origin + this.callback_url
       try {
         const resp = await this._initUserPayment(this.formData)
         if (resp.data) {

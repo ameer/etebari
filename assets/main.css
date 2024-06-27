@@ -5,9 +5,23 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("~static/fonts/Vazirmatn[wght].ttf"),
+    url("~static/fonts/Vazirmatn[wght].woff2") format("woff2 supports variations"),
+    url("~static/fonts/Vazirmatn[wght].woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 body {
   scroll-behavior: smooth;
+}
+
+.vpd-wrapper {
+  font-family: 'IranYekan';
 }
 
 .mono {
@@ -63,9 +77,11 @@ a {
 .bg-brandPrimary-silver {
   background-color: rgb(244 245 249 / 1);
 }
+
 .bg-brandPrimary-main {
   background-color: rgb(77 89 153 / 1);
 }
+
 .border-gray-100 {
   border: 1px solid rgb(243 244 246 / 1);
 }
@@ -86,12 +102,14 @@ a {
   box-shadow: 0 6px 12px 0 rgba(41, 34, 115, 0.082) !important;
   /* box-shadow: 0px 6px 16px -6px #4545550d; */
 }
+
 /* .no-width-border {
   box-shadow: inset 0px 0px 0 1px var(--base-border) !important;
 } */
 .custom-item-group .v-item.v-item--active {
   box-shadow: inset 0px 0px 0 2px rgb(77 89 153) !important;
 }
+
 .header_shadow {
   box-shadow: 0 6px 16px -6px rgba(69, 69, 85, 0.05);
 }
@@ -202,27 +220,35 @@ span.circle {
 .filter-btn.v-btn.v-btn--outlined {
   border-color: rgb(209, 213, 219) !important;
 }
+
 .leading-3 {
   line-height: 0.75rem !important;
 }
+
 .leading-5 {
   line-height: 1.25rem !important;
 }
+
 .leading-6 {
   line-height: 1.5rem !important;
 }
+
 .leading-7 {
   line-height: 1.75rem !important;
 }
+
 .leading-8 {
   line-height: 2rem !important;
 }
-.custom-text-field.v-text-field--outlined > .v-input__control > .v-input__slot {
+
+.custom-text-field.v-text-field--outlined>.v-input__control>.v-input__slot {
   min-height: 46px !important;
 }
+
 .custom-text-field.v-text-field--outlined label {
   top: 14px !important;
 }
+
 .upload-area {
   border-color: #4d5999 !important;
   border-style: dashed !important;
@@ -238,9 +264,11 @@ span.circle {
   cursor: pointer;
   position: relative;
 }
+
 path.upload-icon {
   fill: #bfbfbf !important;
 }
+
 .drop-outline-wrapper {
   position: absolute;
   top: 0;
@@ -249,6 +277,7 @@ path.upload-icon {
   left: 0;
   pointer-events: none;
 }
+
 .drop-outline-path {
   fill: none;
   stroke-dasharray: 13.5, 11;
@@ -258,15 +287,18 @@ path.upload-icon {
   transition: stroke 0.2s ease-in-out;
   stroke-dashoffset: 0;
 }
+
 .upload-area.drag-over,
 .upload-area.drag-over path.upload-icon {
   color: #134ad4 !important;
   fill: #134ad4 !important;
 }
+
 .upload-area.drag-over .drop-outline-path {
   animation: drop-outline-move 0.5s linear infinite;
   stroke: #134ad4;
 }
+
 @keyframes drop-outline-move {
   0% {
     stroke-dashoffset: 0;
@@ -282,11 +314,17 @@ path.upload-icon {
   color: red;
   margin-right: 4px;
 }
+
 .text-underline {
   text-decoration: none !important;
   border-bottom: 1px solid currentColor !important;
 }
+
 .custom-color-chip {
   background-color: #EDEEF5;
   border: 1px solid #4d5999;
+}
+
+.rotate-chervron {
+  transform: rotate(180deg);
 }

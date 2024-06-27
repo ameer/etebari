@@ -150,7 +150,7 @@ export default {
     },
     submitBtnText () {
       try {
-        return this.initialData.walletHasBalance && this._userBalance - this.initialData.total > 0 ? 'پرداخت از کیف پول' : 'پرداخت اینترنتی'
+        return this.initialData.walletHasBalance && this._userBalance - this.initialData.total >= 0 ? 'پرداخت از کیف پول' : 'پرداخت اینترنتی'
       } catch (error) {
         return 'پرداخت'
       }

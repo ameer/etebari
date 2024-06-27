@@ -4,7 +4,7 @@
     class="rounded custom-text-field"
     :value="value"
     v-bind="$attrs"
-    @input="$emit('input', $event)"
+    @input="$emit('input', $event, model)"
   />
 </template>
 <script>
@@ -13,6 +13,10 @@ export default {
     value: {
       type: [String, Number],
       default: ''
+    },
+    model: {
+      type: String,
+      default: 'model'
     }
   }
 }

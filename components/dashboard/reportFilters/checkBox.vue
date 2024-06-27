@@ -6,7 +6,7 @@
       :value="option.id"
       large
       class="pl-12"
-      @change="$emit('change', {initValue: value, newValue: $event})"
+      @change="$emit('change', {initValue: value, newValue: $event}, model)"
     >
       <template #label>
         <div v-text="option.title" />
@@ -28,6 +28,10 @@ export default {
     options: {
       type: Array,
       default: () => []
+    },
+    model: {
+      type: String,
+      default: 'model'
     }
   }
 }

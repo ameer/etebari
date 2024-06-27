@@ -13,6 +13,7 @@
         </v-row>
       </v-container>
     </v-main>
+    <div id="modal-container" />
     <dashboard-footer />
   </default-layout>
 </template>

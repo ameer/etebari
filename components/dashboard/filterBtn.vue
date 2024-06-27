@@ -1,35 +1,41 @@
 <template>
   <v-menu
-    v-model="open"
+    v-click-outside="onClickOutsideStandard"
+    :value="open"
     bottom
     offset-y
     internal-activator
+    :close-on-click="false"
     :close-on-content-click="false"
   >
-    <template #activator="{ attrs, on }">
+    <template #activator="{ }">
       <v-btn
-        v-bind="attrs"
+        :id="$attrs.id"
         outlined
         class="filter-btn px-2"
-        v-on="on"
+        @click="open = true"
       >
         {{ filter.title }}
-        <v-icon right>
+        <v-icon right :class="{'rotate-chervron' : open}">
           mdi-chevron-down
         </v-icon>
       </v-btn>
     </template>
     <v-card class="pa-4">
       <v-form ref="filterForm" v-model="valid" @submit.prevent="handleSubmit">
-        <component
-          :is="`dashboard-report-filters-${filter.comp}`"
-          :parent-index="filter.model"
-          :value="formData[filter.model]"
-          :label="filter.title"
-          v-bind="filter"
-          @input="handleInput"
-          @change="handleChange"
-        />
+        <template v-for="(model, j) in models">
+          <component
+            :is="`dashboard-report-filters-${filter.comp}`"
+            :id="`${filter.model}`"
+            :key="`ccm-${j}`"
+            :model="model"
+            :value="formData[model]"
+            :label="filter.title"
+            v-bind="filter"
+            @input="handleInput"
+            @change="handleChange"
+          />
+        </template>
         <v-btn
           class="rounded-lg"
           dark
@@ -63,7 +69,27 @@ export default {
       open: false
     }
   },
+  computed: {
+    models () {
+      if (typeof this.filter.model === 'string') {
+        return [this.filter.model]
+      } else if (this.filter.model instanceof Array) {
+        return this.filter.model
+      } else {
+        return []
+      }
+    }
+  },
   methods: {
+    onClickOutsideStandard (e) {
+      try {
+        if (!e.target.closest(`#${this.$attrs.id}`) && !e.target.closest('#modal-container') && !e.target.closest('.v-menu__content.theme--light.menuable__content__active') && !e.target.className.startsWith('vpd')) {
+          this.open = false
+        }
+      } catch (error) {
+
+      }
+    },
     handleSubmit () {
       if (this.filter.comp === 'check-box' && this.formData[this.filter.model].length === 0) {
         this.open = false
@@ -73,20 +99,21 @@ export default {
         this.open = false
       }
     },
-    handleInput (value) {
-      this.formData[this.filter.model] = value
+    handleInput (value, model) {
+      console.log(value, model)
+      this.formData = Object.assign({}, this.formData, { [model]: value })
     },
-    handleChange ({ initValue, newValue }) {
-      if (this.formData[this.filter.model] instanceof Array) {
+    handleChange ({ initValue, newValue }, model) {
+      if (this.formData[model] instanceof Array) {
         if (newValue === null) {
-          const toDeleteIndex = this.formData[this.filter.model].findIndex(i => i === initValue)
-          this.formData[this.filter.model].splice(toDeleteIndex, 1)
+          const toDeleteIndex = this.formData[model].findIndex(i => i === initValue)
+          this.formData[model].splice(toDeleteIndex, 1)
         } else {
-          this.formData[this.filter.model].push(newValue)
+          this.formData[model].push(newValue)
         }
       } else {
-        this.formData[this.filter.model] = []
-        this.formData[this.filter.model].push(newValue)
+        this.formData[model] = []
+        this.formData[model].push(newValue)
       }
     }
   }

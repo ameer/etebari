@@ -60,7 +60,7 @@
               <v-icon left>
                 mdi-delete-outline
               </v-icon>
-              <span>حدف فیلترها</span>
+              <span>حذف فیلترها</span>
             </v-btn>
           </div>
           <dashboard-empty-report />
@@ -152,8 +152,8 @@ export default {
             }
           ]
         },
-        { title: 'شناسه یکتا گزارش', comp: 'text-box', model: 'report_code' }
-        // { title: 'بازه زمانی درخواستی', comp: 'text-box', model: 'from_date' }
+        { title: 'شناسه یکتا گزارش', comp: 'text-box', model: 'report_code' },
+        { title: 'بازه زمانی درخواستی', comp: 'date-picker', model: ['from_date', 'to_date'] }
       ],
       translateObject: {
         customer_national_code: 'شماره ملی',
@@ -161,7 +161,8 @@ export default {
         request_status: 'وضعیت درخواست',
         share_type: 'نوع درخواست',
         report_code: 'شناسه یکتا گزارش',
-        from_date: 'بازه زمانی درخواستی'
+        from_date: 'از',
+        to_date: 'تا'
       },
       enumTranslate: {
         customer_type: {

@@ -31,39 +31,31 @@
               <div class="my-4">
                 <div class="w-full d-flex justify-start align-center">
                   <span class="w-72">قیمت گزارش اعتباری </span>
-                  <span class="d-flex align-center">
-                    <span class=" font-weight-bold w-12 primaryBlack--text">73,400</span>
-                    <span class="text-gray-500 mx-6">ریال</span>
-                  </span>
+                  <common-price :price="initialData.price" />
                 </div>
               </div>
               <div class="my-4">
                 <div class="w-full d-flex justify-start  align-center">
                   <span class="w-72">مالیات بر ارزش افزوده </span>
-                  <span class="d-flex align-center">
-                    <span class="font-weight-bold w-12 primaryBlack--text">6,600</span>
-                    <span class="text-gray-500 mx-6">ریال</span>
-                  </span>
+                  <common-price :price="initialData.tax" />
                 </div>
               </div>
               <div class="my-4">
                 <div class="w-full d-flex justify-start  align-center">
                   <span class="w-72">تخفیف </span>
-                  <span class="d-flex align-center">
-                    <span class=" font-weight-bold w-12 primaryBlack--text">0</span>
-                    <span class="text-gray-500 mx-6">ریال</span>
-                  </span>
+                  <common-price :price="0" />
                 </div>
               </div>
               <div class="my-4">
                 <div class="mb-2">
                   <v-divider class="border-b-2 border-dashed ml-10 border-[#4D599933]" style="border-color: rgb(77 89 153 / 20%);border-style: dashed;border-width: 0;border-bottom-width: 2px;" />
                 </div><div class="w-full d-flex justify-start  align-center">
-                  <span class="w-72 font-weight-bold">مبلغ کل </span>
-                  <span class="d-flex align-center">
+                  <span class="w-72 font-weight-bold">مبلغ کل</span>
+                  <common-price :price="initialData.total" :css-class="'text-h6 text-brandPrimary-main'" />
+                  <!-- <span class="d-flex align-center">
                     <span class="font-weight-bold w-12 text-h6 text-brandPrimary-main">80,000</span>
                     <span class="text-gray-500 mx-6">ریال</span>
-                  </span>
+                  </span> -->
                 </div>
               </div>
             </div>
@@ -88,30 +80,21 @@
           <div class="pa-3 border-gray-100 rounded-lg d-flex flex-column align-center mb-4">
             <div class="d-flex align-center justify-space-between fill-width">
               <span class="text-caption">مبلغ قابل پرداخت</span>
-              <span class="d-flex align-center">
-                <span class="font-weight-bold w-12 primaryBlack--text">80,000</span>
-                <span class="text-gray-500 mx-6">ریال</span>
-              </span>
+              <common-price :price="initialData.cost" />
             </div>
             <div class="d-flex align-center  fill-width">
               <span class="text-caption">موجودی کیف پول</span>
-              <span v-if="userBalance < 80000" class="text-caption error--text  mr-1">(موجودی ناکافی)</span>
+              <span v-if="_userBalance < 80000" class="text-caption error--text  mr-1">(موجودی ناکافی)</span>
               <v-spacer />
-              <span class="d-flex align-center">
-                <span class="font-weight-bold w-12 primaryBlack--text">{{ $addTSP(userBalance) }}</span>
-                <span class="text-gray-500 mx-6">ریال</span>
-              </span>
+              <common-price :price="_userBalance" />
             </div>
             <div class="fill-width">
               <v-divider class="border-b-2 border-dashed my-4 border-[#4D599933]" style="border-color: rgb(77 89 153 / 20%);border-style: dashed;border-width: 0;border-bottom-width: 2px;" />
             </div>
             <div class="d-flex align-center fill-width mb-4">
-              <span class="text-caption">مبلغ  مورد نیاز شارژ  حساب</span>
+              <span class="text-caption">مبلغ  مورد نیاز شارژ حساب</span>
               <v-spacer />
-              <span class="d-flex align-center">
-                <span class="font-weight-bold w-12 text-h6 success--text">80,000</span>
-                <span class="text-gray-500 mx-6">ریال</span>
-              </span>
+              <common-price :css-class="'text-h6 success--text'" :price="initialData.payAmount" />
             </div>
             <v-btn
               block
@@ -121,8 +104,11 @@
               :loading="loading"
               @click="submitFactor"
             >
-              <div class="text-body-1">
-                پرداخت (80,000 ریال)
+              <div class="text-body-1 d-flex align-center">
+                <span class="ml-2">
+                  {{ submitBtnText }}
+                </span>
+                (<common-price :css-class="'text-body-1 white--text'" :suffix-class="'white--text mr-1'" :price="initialData.total" />)
               </div>
             </v-btn>
             <span class="mt-4 text-caption text-brandPrimary-black text-center">ضمن تأیید هزینه گزارش، موافقت خود را با <span class="text-brandPrimary-main pointer whitespace-nowrap" @click.stop="openTermsDialog"> قوانین و مقررات </span> سامانه اعلام می‌نمایم.</span>
@@ -157,27 +143,52 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('accounts', ['userBalance']),
-    ...mapGetters('payments', ['callbackURL'])
+    ...mapGetters('accounts', ['_userBalance']),
+    ...mapGetters('payments', ['callbackURL']),
+    initialData () {
+      return this.$route.params.initialData
+    },
+    submitBtnText () {
+      try {
+        return this.initialData.walletHasBalance && this._userBalance - this.initialData.total > 0 ? 'پرداخت از کیف پول' : 'پرداخت اینترنتی'
+      } catch (error) {
+        return 'پرداخت'
+      }
+    }
   },
   methods: {
+    ...mapActions('requests', ['_createUpdateUserRequests']),
     ...mapActions('payments', ['_getGateways', '_initUserPayment']),
     openTermsDialog () {
       this.termsDialog = true
     },
     async submitFactor () {
       this.loading = true
-      this.formData.callback_url = window.location.origin + this.callbackURL
-      try {
-        const resp = await this._initUserPayment(this.formData)
-        if (resp.data) {
-          window.location.href = resp.data.redirectUrl
+      if (!this.initialData.walletHasBalance) {
+        this.formData.callback_url = window.location.origin + this.callbackURL
+        try {
+          const resp = await this._initUserPayment(this.formData)
+          if (resp.data) {
+            window.location.href = resp.data.redirectUrl
+          }
+        } catch (error) {
+          this.$toast.error('خطا در اتصال به درگاه')
+          console.log(error)
+        } finally {
+          this.loading = false
         }
-      } catch (error) {
-        this.$toast.error('خطا در اتصال به درگاه')
-        console.log(error)
-      } finally {
-        this.loading = false
+      } else { // User has enough balance
+        try {
+          const resp = await this._createUpdateUserRequests()
+          if (resp.data && resp.data.requestId) {
+            this.$router.push('/dashboard/requests')
+          }
+        } catch (error) {
+          this.$toast.error('خطا در ایجاد درخواست')
+          console.log(error)
+        } finally {
+          this.loading = false
+        }
       }
     }
   }

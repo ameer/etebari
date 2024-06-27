@@ -1,9 +1,11 @@
 /* eslint-disable camelcase */
 export const $URL = {
-  requests: (request_id = false) => {
+  requests: (request_id = false, unseen = false) => {
     let url = 'requests/'
     if (request_id !== false) {
       url = `requests/?request_id=${request_id}`
+    } else if (unseen === true) {
+      url = 'requests/?unseen=true'
     }
     return url
   },
@@ -37,14 +39,14 @@ export const mutations = {
   }
 }
 export const actions = {
-  _getUserRequests ({ dispatch }) {
-    return dispatch('$get', { url: $URL.requests(), key: 'userRequests' }, { root: true })
+  _getUserRequests ({ dispatch }, { request_id = false, unseen = false }) {
+    return dispatch('$get', { url: $URL.requests(request_id, unseen), key: 'userRequests' }, { root: true })
   },
-  _createUpdateUserRequests ({ dispatch }, request_id) {
+  _createUpdateUserRequests ({ dispatch }, request_id = false) {
     return dispatch('$post', { url: $URL.requests(request_id), key: 'updateUserRequests' }, { root: true })
   },
-  _initUserRequests ({ dispatch }) {
-    return dispatch('$post', { url: $URL.initRequest, key: 'initUserRequests' }, { root: true })
+  _initUserRequest ({ dispatch }) {
+    return dispatch('$post', { url: $URL.initRequest, key: 'initUserRequest' }, { root: true })
   }
 }
 export const getters = {

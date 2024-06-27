@@ -15,7 +15,8 @@
             color="primary"
             class="text-body-1 font-weight-bold rounded-lg my-6"
             height="52"
-            to="/dashboard/factor"
+            :loading="loading"
+            @click="handleNewInquiry"
           >
             درخواست گزارش جدید
           </v-btn>
@@ -71,8 +72,31 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
-  layout: 'dashboard'
+  layout: 'dashboard',
+  data () {
+    return {
+      loading: false
+    }
+  },
+  methods: {
+    ...mapActions('requests', ['_getUserRequests', '_initUserRequest']),
+    async handleNewInquiry () {
+      try {
+        // Check if user has unseen inquiry
+        const resp = await this._getUserRequests({ unseen: true })
+        if (resp.data.totalRowsCount > 0) {
+          // Should check for invitations
+        } else {
+          const initResponse = await this._initUserRequest()
+          this.$router.push({ name: 'dashboard-factor', params: { initialData: initResponse.data } })
+        }
+      } catch (error) {
+
+      }
+    }
+  }
 }
 </script>
 <style>

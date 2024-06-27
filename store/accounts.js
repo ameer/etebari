@@ -76,6 +76,9 @@ export const actions = {
 }
 export const getters = {
   loading: state => state.loading,
+  _userBalance (_state, _getters, rootState) {
+    return rootState.auth.user?.amount ?? 0
+  },
   userBalance (_state, _getters, rootState) {
     return addTSP(rootState.auth.user?.amount)
   }

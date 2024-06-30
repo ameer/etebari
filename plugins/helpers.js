@@ -1,3 +1,5 @@
+import translate from './translate'
+
 export default (context, inject) => {
   const rules = (args = 1, msg = null) => {
     return {
@@ -139,14 +141,14 @@ export default (context, inject) => {
     }
   }
   inject('removeTSP', removeTSP)
-  const dtf = (timestamp, options = { dateStyle: 'short' }) => {
+  const df = (date, options = { dateStyle: 'short', numberingSystem: 'latn' }) => {
     try {
-      return Intl.DateTimeFormat('fa-IR', options).format(timestamp)
+      return Intl.DateTimeFormat('fa-IR', options).format(date)
     } catch (error) {
-      return timestamp
+      return date
     }
   }
-  inject('dtf', dtf)
+  inject('df', df)
   const longDTF = (timestamp) => {
     try {
       const parts = Intl.DateTimeFormat('fa-IR', { dateStyle: 'full', timeStyle: 'short' }).formatToParts(timestamp)
@@ -161,4 +163,14 @@ export default (context, inject) => {
     }
   }
   inject('longDTF', longDTF)
+  const t = (key, subkey = false) => {
+    try {
+      if (subkey) {
+        return translate.enumTranslate[key][subkey]
+      } else {
+        return translate[key]
+      }
+    } catch (error) {}
+  }
+  inject('t', t)
 }

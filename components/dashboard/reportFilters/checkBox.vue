@@ -3,10 +3,11 @@
     <v-checkbox
       v-for="(option, i) in options"
       :key="`cb-${parentIndex}-${i}`"
-      :value="option.id"
+      :value="option.value"
       large
-      class="pl-12"
-      @change="$emit('change', {initValue: value, newValue: $event}, model)"
+      hide-details
+      class="my-1 py-4"
+      @change="$emit('change', {initValue: value, newValue: $event}, models[0])"
     >
       <template #label>
         <div v-text="option.title" />
@@ -17,9 +18,9 @@
 <script>
 export default {
   props: {
-    value: {
-      type: [String, Number, Array],
-      default: () => []
+    formData: {
+      type: Object,
+      default: () => {}
     },
     parentIndex: {
       type: [String, Number],
@@ -29,9 +30,9 @@ export default {
       type: Array,
       default: () => []
     },
-    model: {
-      type: String,
-      default: 'model'
+    models: {
+      type: Array,
+      default: () => ['model']
     }
   }
 }

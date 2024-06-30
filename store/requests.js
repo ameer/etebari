@@ -39,7 +39,8 @@ export const mutations = {
   }
 }
 export const actions = {
-  _getUserRequests ({ dispatch }, { request_id = false, unseen = false }) {
+  _getUserRequests ({ dispatch }, data) {
+    const { request_id, unseen } = data || { request_id: false, unseen: false }
     return dispatch('$get', { url: $URL.requests(request_id, unseen), key: 'userRequests' }, { root: true })
   },
   _createUpdateUserRequests ({ dispatch }, request_id = false) {

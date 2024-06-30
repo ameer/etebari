@@ -4,6 +4,7 @@
     :value="open"
     bottom
     offset-y
+
     internal-activator
     :close-on-click="false"
     :close-on-content-click="false"
@@ -21,21 +22,19 @@
         </v-icon>
       </v-btn>
     </template>
-    <v-card class="pa-4">
+    <v-card class="pa-4" min-width="288">
       <v-form ref="filterForm" v-model="valid" @submit.prevent="handleSubmit">
-        <template v-for="(model, j) in models">
-          <component
-            :is="`dashboard-report-filters-${filter.comp}`"
-            :id="`${filter.model}`"
-            :key="`ccm-${j}`"
-            :model="model"
-            :value="formData[model]"
-            :label="filter.title"
-            v-bind="filter"
-            @input="handleInput"
-            @change="handleChange"
-          />
-        </template>
+        <component
+          :is="`dashboard-report-filters-${filter.comp}`"
+          :parent-index="filter.model"
+          :models="models"
+          :form-data="formData"
+          :value="formData[filter.model]"
+          :label="filter.title"
+          v-bind="filter"
+          @input="handleInput"
+          @change="handleChange"
+        />
         <v-btn
           class="rounded-lg"
           dark

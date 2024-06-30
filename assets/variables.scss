@@ -4,9 +4,7 @@ $btn-letter-spacing: normal;
 $tabs-item-letter-spacing: normal;
 $material-light: (
   "background": #f9fafb,
-  "text": (
-    "primary": #454555
-  )
+  "text": ("primary": #454555)
 );
 $container-max-widths: (
   "lg": 1280px,
@@ -46,4 +44,7 @@ $headings: (
   ),
   "overline": ("letter-spacing": normal,
   ),
+);
+$rounded: (
+  'lgg': 12px
 );

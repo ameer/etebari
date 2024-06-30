@@ -2,21 +2,21 @@
   <v-text-field
     outlined
     class="rounded custom-text-field"
-    :value="value"
+    :value="formData[models[0]]"
     v-bind="$attrs"
-    @input="$emit('input', $event, model)"
+    @input="$emit('input', $event, models[0])"
   />
 </template>
 <script>
 export default {
   props: {
-    value: {
-      type: [String, Number],
-      default: ''
+    formData: {
+      type: Object,
+      default: () => {}
     },
-    model: {
-      type: String,
-      default: 'model'
+    models: {
+      type: Array,
+      default: () => ['model']
     }
   }
 }

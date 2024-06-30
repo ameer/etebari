@@ -145,6 +145,9 @@ export default {
   computed: {
     ...mapGetters('accounts', ['_userBalance']),
     ...mapGetters('payments', ['callbackURL']),
+    fromPath () {
+      return this.$route.query.from ?? 'inquiry'
+    },
     initialData () {
       return this.$route.params.initialData
     },

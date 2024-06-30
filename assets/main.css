@@ -118,6 +118,10 @@ a {
   color: #455089 !important;
 }
 
+.theme--light.v-btn--active.active-nav-link::before {
+  opacity: 0 !important;
+}
+
 .rounded-12 {
   border-radius: 12px !important;
 }

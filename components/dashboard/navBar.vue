@@ -5,11 +5,13 @@
         v-for="(item, i) in items"
         :key="`dn-${i}`"
         text
-        plain
         :to="item.to"
         class="pa-2 fill-height"
+        :ripple="false"
+        tile
         height="64px"
         active-class="active-nav-link font-weight-bold"
+        v-bind="item"
       >
         <span v-text="item.title" />
       </v-btn>
@@ -23,7 +25,7 @@ export default {
   data () {
     return {
       items: [
-        { title: 'پیشخوان', to: '/dashboard' },
+        { title: 'پیشخوان', to: '/dashboard', exact: true },
         { title: 'گزارش اعتباری من', to: '/dashboard/inquiry' },
         { title: 'گزارش اعتباری مشتریان من', to: '/dashboard/share' },
         { title: 'اعتراض', to: '/dashboard/objection' }
